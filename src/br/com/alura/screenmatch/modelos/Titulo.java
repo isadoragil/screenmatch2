@@ -63,8 +63,20 @@ public class Titulo implements Comparable<Titulo> {
         return somaDasAvaliacoes / totalDeAvaliacoes;
     }
 
-    @Override
-    public int compareTo(Titulo outroTitulo) {
-        return this.getNome().compareTo(outroTitulo.getNome());
-    }
+    //@Override
+    //public int compareTo(Titulo outroTitulo) {
+    //    return this.getNome().compareTo(outroTitulo.getNome());
+    //}
+
+    //ira ordenar por ano de lançamento em ordem decrescente
+    //@Override
+    //public int compareTo(Titulo outroTitulo) {
+    //    if (this.getAnoDeLancamento() < outroTitulo.getAnoDeLancamento()) {
+    //        return 1;
+    //    } else if (this.getAnoDeLancamento() > outroTitulo.getAnoDeLancamento()) {
+    //        return -1;
+    //    } else {
+    //        return 0;
+    //    }
+    //}
 }
