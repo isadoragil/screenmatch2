@@ -8,6 +8,8 @@ import br.com.alura.screenmatch.modelos.Serie;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Principal {
     public static void main(String[] args) {
@@ -53,7 +55,8 @@ public class Principal {
         var filme3 = new Filme("Crepúsculo", 2008);
         filme3.setDuracaoEmMinutos(200);
 
-        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        //Arraylist<Filme> listaDeFilmes = new ArrayList<>();
+        List<Filme> listaDeFilmes = new LinkedList<>();
         listaDeFilmes.add(filme3);
         listaDeFilmes.add(filme1);
         listaDeFilmes.add(filme2);

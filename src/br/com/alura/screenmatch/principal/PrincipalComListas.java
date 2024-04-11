@@ -22,6 +22,7 @@ public class PrincipalComListas {
         lista.add(filme3);
         lista.add(lost);
 
+        System.out.println("Ordenando por nome:");
         Collections.sort(lista);
         System.out.println(lista);
 
