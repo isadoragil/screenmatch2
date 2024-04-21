@@ -6,7 +6,6 @@ import br.com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
@@ -35,5 +34,9 @@ public class PrincipalComListas {
         }
 
         //lista.forEach(list -> System.out.println(list));
+
+        Collections.sort(lista);
+        System.out.println("Lista ordenada: ");
+        System.out.println(lista);
     }
 }

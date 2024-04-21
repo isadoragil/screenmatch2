@@ -1,7 +1,6 @@
 package br.com.alura.screenmatch.principal;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class PrincipalOrdenado {
