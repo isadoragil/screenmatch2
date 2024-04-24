@@ -17,34 +17,34 @@ public class PrincipalComBusca {
         Scanner sc = new Scanner(System.in);
         System.out.println("Digite um filme para busca:");
         var busca = sc.nextLine();
-        busca = busca.replaceAll(" ", "+");
-
-        String endereco = "http://www.omdbapi.com/?t=" + busca + "&apikey=4c19ce34";
-        //HttpRequest
-        //HttpResponse
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endereco))
-                .build();
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
-        String json = response.body();
-        System.out.println(json);
-
-
-
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .create();
-
-        //Gson gson = new Gson(); (caso nome dos objetos estejam corretos com o json)
-
-        //Titulo meuTitulo = gson.fromJson(json, Titulo.class); (caso não tenha o record)
-
-        TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
-        System.out.println(meuTituloOmdb);
 
         try {
+            String endereco = "http://www.omdbapi.com/?t=" + busca.replaceAll(" ", "+") + "&apikey=4c19ce34";
+            //HttpRequest
+            //HttpResponse
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(endereco))
+                    .build();
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+            String json = response.body();
+            System.out.println(json);
+
+
+
+            Gson gson = new GsonBuilder()
+                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                    .create();
+
+            //Gson gson = new Gson(); (caso nome dos objetos estejam corretos com o json)
+
+            //Titulo meuTitulo = gson.fromJson(json, Titulo.class); (caso não tenha o record)
+
+            TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+            System.out.println(meuTituloOmdb);
+
+        //try {
             Titulo meuTitulo = new Titulo(meuTituloOmdb);
             System.out.println("Título já convertido:");
             System.out.println(meuTitulo);
@@ -52,7 +52,10 @@ public class PrincipalComBusca {
             System.out.println("-----------------------------------------------------------");
             System.out.println("Aconteceu um erro:");
             System.out.println(e.getMessage());
-        }
+        } /*catch (IllegalArgumentException e) {
+            System.out.println("Algum erro de argumento na busca, verifique o endereço!");
+        }*/
+
         System.out.println("-----------------------------------------------------------");
         System.out.println("O programa finalizou corretamente!");
 
