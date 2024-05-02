@@ -49,7 +49,21 @@ public class PrincipalComBusca {
             System.out.println(meuTitulo);
 
             //gravando dados em arquivos (passar o caminho do diretório como argumento: ("C:\\meuArquivo.txt")
-            // )
+            
+            //File file = new File("C:\\meuArquivo.txt");
+            //FileReader reader = new FileReader(file);
+            //int data = reader.read();
+            //while (data != -1) {
+            //    System.out.print((char) data);
+            //    data = reader.read();
+            //}
+            //reader.close();
+
+            //File file = new File("C:\\saida.txt");
+            //FileWriter writer = new FileWriter(file);
+            //writer.write("Olá, mundo!");
+            //writer.close();
+
             FileWriter escrita = new FileWriter("filmes.txt");
             escrita.write(meuTitulo.toString());
             escrita.close();
