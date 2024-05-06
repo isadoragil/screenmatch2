@@ -6,6 +6,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -20,6 +21,10 @@ public class PrincipalComBusca {
         Scanner sc = new Scanner(System.in);
         String busca = "";
         List<Titulo> titulos = new ArrayList<>();
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .create();
 
         while (!busca.equalsIgnoreCase("sair")) {
             System.out.println("Digite um filme para busca:");
@@ -31,8 +36,7 @@ public class PrincipalComBusca {
 
             try {
                 String endereco = "http://www.omdbapi.com/?t=" + busca.replaceAll(" ", "+") + "&apikey=4c19ce34";
-                //HttpRequest
-                //HttpResponse
+
                 HttpClient client = HttpClient.newHttpClient();
                 HttpRequest request = HttpRequest.newBuilder()
                         .uri(URI.create(endereco))
@@ -41,10 +45,6 @@ public class PrincipalComBusca {
                         .send(request, HttpResponse.BodyHandlers.ofString());
                 String json = response.body();
                 System.out.println(json);
-
-                Gson gson = new GsonBuilder()
-                        .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                        .create();
 
                 //Gson gson = new Gson(); (caso nome dos objetos estejam corretos com o json)
 
@@ -70,7 +70,11 @@ public class PrincipalComBusca {
                 System.out.println("Aconteceu algo, não sei o que!");
             }
         }
+
         System.out.println(titulos);
+        FileWriter escrita = new FileWriter("filmes.json");
+        escrita.write(gson.toJson(titulos));
+        escrita.close();
         System.out.println("-----------------------------------------------------------");
         System.out.println("O programa finalizou corretamente!");
 
